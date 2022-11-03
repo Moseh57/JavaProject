@@ -29,9 +29,14 @@ public class MyFrame extends JFrame implements ActionListener{
 	//JTextField text2;
 	String s;
 	int j;
+	int H;
+	int mpya;
 	
 	
 	MyFrame(){
+		
+		Random rand = new Random();
+        H = rand.nextInt(100);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setLayout(new FlowLayout());
 		frameObj = new JFrame(); 
@@ -50,69 +55,86 @@ public class MyFrame extends JFrame implements ActionListener{
 		//MyFrame f = new MyFrame();
 		btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				History2.setPreferredSize(new Dimension(200,30));
+				History2.setEditable(false);
+				History2.setBackground(Color.green);
+				frameObj.add(History2);
+				
+				History3.setPreferredSize(new Dimension(200,30));
+				History3.setEditable(false);
+				History3.setBackground(Color.pink);
+				frameObj.add(History3);
+				
+				History4.setPreferredSize(new Dimension(200,30));
+				History4.setEditable(false);
+				History4.setBackground(Color.green);
+				frameObj.add(History4);
+			
+                
 				//s = textField.getText();
 				if(j==0) {
 					s = textField.getText();
 					History.setText("Your 1st guess is :"+ s);
+					int G = Integer.parseInt(textField.getText());
+					if (G == H) {
+	                    lbl2.setText("You guessed right");
+	                } else if (G > H ){
+	                    lbl2.setText("Your guess is above");
+	                } else if(G < H ) {
+	                    lbl2.setText("Your guess is below ");
+	                }
 				}
 				if(j==1) {
 					s = textField.getText();
-					History2.setPreferredSize(new Dimension(200,30));
-					History2.setEditable(false);
-					History2.setBackground(Color.green);
+					int G = Integer.parseInt(textField.getText());
+					
 					
 					History2.setText("Your 2nd guess is :" +s);
-					frameObj.add(History2);
+					
+					if (G == H) {
+	                    lbl2.setText("You guessed right");
+	                } else if (G > H ){
+	                    lbl2.setText("Your guess is above");
+	                } else if(G < H ) {
+	                    lbl2.setText("Your guess is below ");
+	                }
 					
 				}
 				if(j==2) {
 					s = textField.getText();
-					History3.setPreferredSize(new Dimension(200,30));
-					History3.setEditable(false);
-					History3.setBackground(Color.pink);
+					int G = Integer.parseInt(textField.getText());
+					
 					
 					History3.setText("Your 3rd guess is :" +s);
-					frameObj.add(History3);
+					
+					if (G == H) {
+	                    lbl2.setText("You guessed right");
+	                } else if (G > H ){
+	                    lbl2.setText("Your guess is above");
+	                } else if(G < H ) {
+	                    lbl2.setText("Your guess is below ");
+	                }
 				}
 				if(j==3) {
 					s = textField.getText();
-					History4.setPreferredSize(new Dimension(200,30));
-					History4.setEditable(false);
-					History4.setBackground(Color.green);
+					int G = Integer.parseInt(textField.getText());
+					
 					
 					History4.setText("Your 4th guess is :"+ s);
-					frameObj.add(History4);
-				}
-				
-				j++;
-				//lbl3.setText("your guess is"+ s);
-				//History3.setText("Your 3rd guess is :"+ s);
-				//History4.setText("Your 4th guess is :"+ s);
-				btn2.setBounds(200, 100, 100, 50);
-
-				int G = Integer.parseInt(textField.getText());
-				
-                int H ;
-                int i;
-                int k=4;
-
-                Random rand = new Random();
-                H = rand.nextInt(100);
-
-                for(i=0;i<k;i++) {
-	                if (G == H) {
+					
+					if (G == H) {
 	                    lbl2.setText("You guessed right");
-	                    break;
-	                } else if (G > H && i != k -1){
+	                } else if (G > H ){
 	                    lbl2.setText("Your guess is above");
-	                } else if(G > H  && i != k -1) {
+	                } else if(G < H ) {
 	                    lbl2.setText("Your guess is below ");
 	                }
-                }
-                if(j==4) {
-                	lbl2.setText("You have exhausted your trials\n the number was" + H);
-                }
-                
+				}
+				 if(j==4) {
+	                	lbl2.setText("You have exhausted your trials\n the number was" + H);
+	                }
+				
+				j++;
 				
 			}
 	});
@@ -123,6 +145,8 @@ public class MyFrame extends JFrame implements ActionListener{
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
+			mpya = rand.nextInt(100);
+			H = mpya;
 			textField.setText("");
 			lbl2.setText("");
 			lbl3.setText("");
@@ -162,21 +186,15 @@ public class MyFrame extends JFrame implements ActionListener{
 		frameObj.add(lbl4);
 		frameObj.add(History);
 		
-		//frameObj.add(History4);
-		//this.pack();
-		
 		frameObj.setLayout(new FlowLayout(FlowLayout.LEFT, 20, 25));
 		
-		frameObj.setSize(400, 400);    
+		frameObj.setSize(560, 400);    
 	    frameObj.setVisible(true); 
 	}
 	
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource()==btn) {
-			//guess1 = Integer.parseInt(textField.getText());
 			
-			//Game.GuessGame();
-			//lbl2.setText("heyy");
 		}
 		
 		
